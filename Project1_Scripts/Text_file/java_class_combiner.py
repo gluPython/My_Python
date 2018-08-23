@@ -14,7 +14,7 @@ def dothis(string):
 def path_leaf(path):
     head, tail = ntpath.split(path)
     return tail or ntpath.basename(head)
-
+ 
 def read_txtln(arg1):
     with open(arg1) as f:
         content = f.readlines()
