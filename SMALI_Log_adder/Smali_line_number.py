@@ -58,8 +58,14 @@ def strreplace(arg1):
     with open(arg1, 'r') as f:
         content = f.read()
     # print (content)
-    contentnew=re.sub("\n    (?!(move-result.*?\n|\.local))", replace,content)
-    #print(contentnew)
+    contentnew = re.sub(
+        "\n(    (invoke|return|const|.put|.get|if-|goto |move-?!(result)|instance|cmp|add-|sub-|div-|rem-|add-|or-|xor-|mul).*?\n)",
+        "\n###@@@###\g<1>\n\g<1>", content)
+    contentnew = re.sub(
+        "\n###@@@###.*?\n",
+        replace, contentnew)
+
+    # print(contentnew)
     # arg2=path_leaf(arg1)
     # print(arg2)
     outputpathme=outputhfilepath(arg1)
