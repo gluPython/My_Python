@@ -59,11 +59,11 @@ def strreplace(arg1):
         content = f.read()
     # print (content)
     contentnew=re.sub("\n    (?!(move-result.*?\n|\.local))", replace,content)
-    print(contentnew)
+    #print(contentnew)
     # arg2=path_leaf(arg1)
     # print(arg2)
     outputpathme=outputhfilepath(arg1)
-    print (outputpathme)
+    print ("Writing... :  "+outputpathme)
     writeme(contentnew,outputpathme)
 
 i=0
@@ -82,7 +82,8 @@ smalilist = [os.path.join(dp, f) for dp, dn, filenames in os.walk(mypath) for f 
 # print(smalilist.__len__())
 # strreplace(smalilist[0])
 for smali in smalilist:
+    print("Processing..... :"+str(1+smalilist.index(smali))+"/"+str(smalilist.__len__()))
     # print(smali)
-     strreplace(smali)
+    strreplace(smali)
 
 
